@@ -14,12 +14,13 @@
     }
     #timer {
       padding: 20px;
-      border: 2px solid #333;
       border-radius: 8px;
-      background-color: #1a1f71;
+      background-color: #0033a0; /* Azul Casas Bahia */
       color: white;
       display: inline-block;
       margin-top: 20px;
+      width: 300px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     #event-name {
       font-size: 24px;
@@ -27,10 +28,30 @@
     }
     #event-date {
       font-size: 20px;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
     #countdown {
       font-size: 32px;
+      margin-bottom: 10px;
+    }
+    #description {
+      font-size: 14px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+    #btn-coaud {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: white;
+      background-color: #0056b3; /* Azul mais claro para o botão */
+      text-decoration: none;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease;
+    }
+    #btn-coaud:hover {
+      background-color: #004494;
     }
   </style>
 </head>
@@ -39,6 +60,8 @@
     <h1 id="event-name">COAUD</h1>
     <h2 id="event-date"></h2>
     <h3 id="countdown"></h3>
+    <p id="description">Indicadores + resultados de trabalhos</p>
+    <a id="btn-coaud" href="https://viavarejo.sharepoint.com/:f:/s/AuditoriaInternaVIA/Eo3dSxQTfY1DoJBAksiqf1AB4NkmLfIMuznxdHtsZjSaPg?e=8WLqQz" target="_blank">COAUD</a>
   </div>
 
   <script>

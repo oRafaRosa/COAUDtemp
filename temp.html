@@ -78,9 +78,11 @@
     ];
 
     const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()); // Remove o horário
     const nextEventDate = eventDates
       .map(date => new Date(date))
-      .find(date => date > now);
+      .find(date => date >= today); // Garante que só conta a partir de hoje
+
 
     if (nextEventDate) {
       document.getElementById("event-date").innerText = nextEventDate.toLocaleDateString("pt-BR", {

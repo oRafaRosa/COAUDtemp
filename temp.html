@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temporizador COAUD</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    #timer {
+      padding: 20px;
+      border: 2px solid #333;
+      border-radius: 8px;
+      background-color: #1a1f71;
+      color: white;
+      display: inline-block;
+      margin-top: 20px;
+    }
+    #event-name {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    #event-date {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+    #countdown {
+      font-size: 32px;
+    }
+  </style>
+</head>
+<body>
+  <div id="timer">
+    <h1 id="event-name">COAUD</h1>
+    <h2 id="event-date"></h2>
+    <h3 id="countdown"></h3>
+  </div>
+
+  <script>
+    const eventDates = [
+      "2025-02-11",
+      "2025-03-11",
+      "2025-04-22",
+      "2025-06-17",
+      "2025-08-05",
+      "2025-09-23",
+      "2025-10-21",
+      "2025-11-04",
+      "2025-12-02"
+    ];
+
+    const now = new Date();
+    const nextEventDate = eventDates
+      .map(date => new Date(date))
+      .find(date => date > now);
+
+    if (nextEventDate) {
+      document.getElementById("event-date").innerText = nextEventDate.toLocaleDateString("pt-BR", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric"
+      });
+
+      function updateCountdown() {
+        const now = new Date();
+        const timeDiff = nextEventDate - now;
+
+        if (timeDiff <= 0) {
+          document.getElementById("countdown").innerText = "O evento está acontecendo!";
+          clearInterval(interval);
+          return;
+        }
+
+        const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+        document.getElementById("countdown").innerText = `${days} dias restantes`;
+      }
+
+      const interval = setInterval(updateCountdown, 1000);
+      updateCountdown();
+    } else {
+      document.getElementById("countdown").innerText = "Nenhum evento futuro.";
+    }
+  </script>
+</body>
+</html>

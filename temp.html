@@ -77,12 +77,16 @@
       "2025-12-02"
     ];
 
+    function parseDate(dateString) {
+      const parts = dateString.split("-"); // Divide a data no formato "YYYY-MM-DD"
+      return new Date(parts[0], parts[1] - 1, parts[2]); // Cria uma data no fuso local
+    }
+
     const now = new Date();
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()); // Remove o horário
     const nextEventDate = eventDates
-      .map(date => new Date(date))
-      .find(date => date >= today); // Garante que só conta a partir de hoje
-
+      .map(parseDate) // Usa a função parseDate para tratar o fuso horário corretamente
+      .find(date => date >= today);
 
     if (nextEventDate) {
       document.getElementById("event-date").innerText = nextEventDate.toLocaleDateString("pt-BR", {
